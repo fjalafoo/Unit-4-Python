@@ -18,7 +18,7 @@ Let's get some practice working with control flow and logic in Python!
 
 Write the code to solve the 6 exercises inside of each file `exercise-1.py` through `exercise-6.py`.
 
-Possible solutions are [here](https://repl.it/@jim_clark/Python-Control-Flow-Lab), but do your best not to peek.
+Possible solutions are [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley), but do your best not to peek.
 
 ## Deliverable
 

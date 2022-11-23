@@ -346,4 +346,44 @@ foods_with_a = [f for f in foods if 'z' in f]
 
 
 
+# nums = [1,2,3]
+
+# print (dir(nums))
+
+
+
+
+class Dog():
+    next_id = 1
+    #init is the equivalent of the constructor fn in JS
+    #self is the equivalent of 'this' in JS obj/classes
+    def __init__(self, name, age = 0):
+        # this.name = name
+        self.name = name
+        self.age = age
+        self.id = Dog.next_id
+        Dog.next_id += 1
+
+    def bark(self):
+        print(f"{self.name} says woof!")
+
+    def __str__(self):
+        return f"Dog name {self.name} is {self.age} years old"
+
+    @classmethod
+    def get_total_dogs(cls):
+        return cls.next_id - 1
+# Dog.get_total_dogs() 
+# XXXXX spot.get_total_dogs() XXXXX
+
+spot = Dog('spot', 8)
+
+fluffy = Dog('fluffy', 4)
+fluffy2 = Dog('fluffy2', 4)
+fluffy3 = Dog('fluffy3', 4)
+# print(Dog.get_total_dogs())
+# spot.bark()
+print(spot)
+
+
 

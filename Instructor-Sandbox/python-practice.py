@@ -383,7 +383,32 @@ fluffy2 = Dog('fluffy2', 4)
 fluffy3 = Dog('fluffy3', 4)
 # print(Dog.get_total_dogs())
 # spot.bark()
-print(spot)
+# print(spot)
+
+
+
+
+
+class ShowDog(Dog):
+    def __init__(self,name,age =0, total_earnings = 0):
+        Dog.__init__(self, name, age)
+        self.total_earnings = total_earnings
+    
+    def add_prize_money(self, amount):
+        self.total_earnings += amount
+
+winky = ShowDog('Winky', 3, 1000)
+
+print(winky)
+
+winky.bark()
+
+print(winky.total_earnings)
+
+winky.add_prize_money(5000)
+
+print(winky.total_earnings)
+
 
 
 

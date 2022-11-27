@@ -21,13 +21,14 @@ def cats_index(request):
     })
 
 
-
-
-
 def about(request):
     return render(request, 'about.html')
     # return HttpResponse('<h1> About the CatCollector </h1>')
 
 # function home(req,res)
 def home(request):
-    return HttpResponse('<h1>My First Django Route!</h1>')
+    return render(request, 'home.html')
+
+    
+# def home(request):
+#     return HttpResponse('<h1>My First Django Route!</h1>')

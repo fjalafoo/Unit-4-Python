@@ -2,19 +2,9 @@ from django.shortcuts import render
 # Add UdpateView & DeleteView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Cat
-
-# class Cat:
-#   def __init__(self, name, breed, description, age):
-#     self.name = name
-#     self.breed = breed
-#     self.description = description
-#     self.age = age
-
-# cats = [
-#   Cat('Lolo', 'tabby', 'foul little demon', 3),
-#   Cat('Sachi', 'tortoise shell', 'diluted tortoise shell', 0),
-#   Cat('Raven', 'black tripod', '3 legged cat', 4)
-# ]
+# Import the FeedingForm
+from .forms import FeedingForm
+from django.shortcuts import render, redirect
 
 
 
@@ -33,8 +23,24 @@ def cats_index(request):
 
 def cats_detail(request, cat_id):
   cat = Cat.objects.get(id=cat_id)
-  return render(request, 'cats/detail.html', { 'cat': cat })
+  # instantiate FeedingForm to be rendered in the template
+  feeding_form = FeedingForm()
+  return render(request, 'cats/detail.html', { 
+     # include the cat and feeding_form in the context
+    'cat': cat, 'feeding_form': feeding_form
+     })
 
+def add_feeding(request, cat_id):
+  # create a ModelForm instance using the data in request.POST
+  form = FeedingForm(request.POST)
+  # validate the form
+  if form.is_valid():
+    # don't save the form to the db until it
+    # has the cat_id assigned
+    new_feeding = form.save(commit=False)
+    new_feeding.cat_id = cat_id
+    new_feeding.save()
+  return redirect('detail', cat_id=cat_id)
 
 class CatCreate(CreateView):
   model = Cat

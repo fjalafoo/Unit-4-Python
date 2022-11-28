@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Finch
-# Register your models here.
+# add Feeding to the import
+from .models import Finch, Feeding
 
 admin.site.register(Finch)
+# register the new Feeding Model 
+admin.site.register(Feeding)
